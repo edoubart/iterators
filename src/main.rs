@@ -45,9 +45,19 @@ fn print_elements(elements: &[String]) { // <- for Vector Slices, works in both
         .for_each(|el| println!("{}", el));
 }
 
+/*
+ * shorten_strings(..):
+ * Shortens each string in the vector to 1 character.
+ */
+fn shorten_strings(elements: &mut Vec<String>) {
+    // 'iter_mut(..)' will give you a mutable reference to each element
+    elements.iter_mut()
+        .for_each(|el| el.truncate(1))
+}
+
 fn main() {
     // Vec<String>
-    let colors = vec![
+    let mut colors = vec![
         String::from("red"),
         String::from("green"),
         String::from("blue"),
@@ -78,5 +88,9 @@ fn main() {
     /*
      * Vector Slices
      */
-    print_elements(&colors[1..3]);
+    //print_elements(&colors[1..3]);
+
+    shorten_strings(&mut colors);
+    println!("{:#?}", colors);
+    
 }
