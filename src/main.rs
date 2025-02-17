@@ -1,4 +1,17 @@
 /*
+ * explode(..):
+ * Turns a Vec<String> into a Vec<Vec<String>>,
+ * This function is a pure function as it doesn't have any side effect.
+ */
+fn explode(elements: &[String]) -> Vec<Vec<String>> {
+    elements.iter()
+        .map(
+            |el| el.chars().map(|c| c.to_string()).collect()
+        )
+        .collect()
+}
+
+/*
  * print_elements(..):
  * Prints each element in the vector one by one.
  */
@@ -139,7 +152,10 @@ fn main() {
     //let uppercased = to_uppercase(&colors);
     //println!("{:#?}", uppercased);
 
-    let mut destination = vec![];
-    move_elements(colors, &mut destination);
-    println!("Destination: {:#?}", destination);
+    //let mut destination = vec![];
+    //move_elements(colors, &mut destination);
+    //println!("Destination: {:#?}", destination);
+
+    let exploded = explode(&colors);
+    println!("{:#?}", exploded);
 }
