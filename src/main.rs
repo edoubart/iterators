@@ -2,7 +2,8 @@
  * print_elements(..):
  * Prints each element in the vector one by one.
  */
-fn print_elements(elements: &Vec<String>) {
+fn print_elements(elements: &[String]) { // <- for Vector Slices, works in both
+//fn print_elements(elements: &Vec<String>) {
     /*
      * Option 1:
      * Use a for loop. Automatically creates an iterator and calls 'next' on
@@ -27,7 +28,19 @@ fn print_elements(elements: &Vec<String>) {
      * It will repeatedly call 'next()' on the iterator until it gets 'None'.
      */
     // "Lazy" iterator, idle
+    //elements.iter()
+    //    // B)
+    //    .for_each(|el| println!("{}", el));
+
+    /*
+     * Iterator Adaptor
+     * 'map(..)' is an iterator adaptor.
+     * Adaptors create a step in a processing pipeline, but don't actually cause
+     * any iteration.
+     */
+    // "Lazy" iterator, idle
     elements.iter()
+        .map(|el| format!("{} {}", el, el))
         // B)
         .for_each(|el| println!("{}", el));
 }
@@ -60,5 +73,10 @@ fn main() {
     /*
      * Call Site
      */
-    print_elements(&colors);
+    //print_elements(&colors);
+
+    /*
+     * Vector Slices
+     */
+    print_elements(&colors[1..3]);
 }
