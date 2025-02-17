@@ -49,7 +49,7 @@ fn print_elements(elements: &[String]) { // <- for Vector Slices, works in both
  * shorten_strings(..):
  * Shortens each string in the vector to 1 character.
  */
-fn shorten_strings(elements: &mut Vec<String>) {
+fn shorten_strings(elements: &mut [String]) {
     // 'iter_mut(..)' will give you a mutable reference to each element
     elements.iter_mut()
         .for_each(|el| el.truncate(1))
@@ -90,7 +90,8 @@ fn main() {
      */
     //print_elements(&colors[1..3]);
 
-    shorten_strings(&mut colors);
+    //shorten_strings(&mut colors);
+    shorten_strings(&mut colors[1..3]);
     println!("{:#?}", colors);
     
 }
