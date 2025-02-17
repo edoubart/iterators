@@ -55,6 +55,39 @@ fn shorten_strings(elements: &mut [String]) {
         .for_each(|el| el.truncate(1))
 }
 
+/*
+ * to_uppercase(..):
+ * Return a new vector with each element capitalized.
+ * This function is a pure function as it doesn't have any side effect.
+ */
+fn to_uppercase(elements: &[String]) -> Vec<String> {
+    // Option 1:
+    //let upcased: Vec<String> = elements.iter()
+    //    // 'map(..)' is an iterator adaptor.
+    //    .map(|el| el.to_uppercase())
+    //    // 'collect()' is an iterator consumer. It will automatically call
+    //    // 'next()'.
+    //    // Collect elements in a brand new data structure of type Vec<String>.
+    //    .collect();
+    //
+    //upcased
+
+    // Option 2:
+    //elements.iter()
+    //    .map(|el| el.to_uppercase())
+    //    .collect()
+ 
+    // Option 3:
+    //elements.iter()
+    //    .map(|el| el.to_uppercase())
+    //    .collect::<Vec<_>>()
+
+    // Option 4 (favorite):
+    elements.iter()
+        .map(|el| el.to_uppercase())
+        .collect::<Vec<String>>() // <- "Turbofish" :)
+}
+
 fn main() {
     // Vec<String>
     let mut colors = vec![
@@ -91,7 +124,9 @@ fn main() {
     //print_elements(&colors[1..3]);
 
     //shorten_strings(&mut colors);
-    shorten_strings(&mut colors[1..3]);
-    println!("{:#?}", colors);
-    
+    //shorten_strings(&mut colors[1..3]);
+    //println!("{:#?}", colors);
+
+    let uppercased = to_uppercase(&colors);
+    println!("{:#?}", uppercased);
 }
