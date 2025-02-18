@@ -101,6 +101,7 @@ fn print_elements(elements: &[String]) { // <- for Vector Slices, works in both
 
 /*
  * shorten_strings(..):
+ *
  * Shortens each string in the vector to 1 character.
  */
 fn shorten_strings(elements: &mut [String]) {
@@ -112,6 +113,7 @@ fn shorten_strings(elements: &mut [String]) {
 
 /*
  * to_uppercase(..):
+ *
  * Return a new vector with each element capitalized.
  * This function is a pure function as it doesn't have any side effect.
  */
