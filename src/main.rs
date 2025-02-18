@@ -12,6 +12,27 @@ fn explode(elements: &[String]) -> Vec<Vec<String>> {
 }
 
 /*
+ * find_color_or(..):
+ * Finds a matching element or returns a fallback.
+ */
+fn find_color_or(elements: &[String], search: &str, fallback: &str) -> String {
+    elements.iter()
+        // Calls 'next' on the iterator until it gets an element that returns a
+        // truthy value from the closure function.
+        // Returns an 'Option' Some(value) if it found something; None if it
+        // didn't find anything.
+        .find(|el| el.contains(search))
+        // 'map_or' is a method that belongs to the 'Option' enum.
+        .map_or(
+            // If the Option is a None, it will return the first argument.
+            String::from(fallback),
+            // If the Option is a Some, it will take the value out of the Some
+            // and run it through the closure.
+            |el| el.to_string()
+        )
+}
+
+/*
  * print_elements(..):
  * Prints each element in the vector one by one.
  */
@@ -156,6 +177,9 @@ fn main() {
     //move_elements(colors, &mut destination);
     //println!("Destination: {:#?}", destination);
 
-    let exploded = explode(&colors);
-    println!("{:#?}", exploded);
+    //let exploded = explode(&colors);
+    //println!("{:#?}", exploded);
+
+    let found_color = find_color_or(&colors, "re", "orange");
+    println!("{}", found_color);
 }
